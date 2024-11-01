@@ -27,9 +27,18 @@ diamonds <- diamonds %>% rename(
 ## Exercise 1
 
 ```{r}
-# Do some preliminary investigations & cleaning
 
+diamonds_clean <- diamonds %>%
+  filter(x > 0, y > 0, z > 0)
+  
+diamonds_clean %>%
+  summarise(clarity) %>%
+  count(clarity)
+  
+diamonds_premium <- diamonds_clean %>%
+  filter(cut == "Premium")
 
+view(diamonds_premium)
 
 
 ```
@@ -40,29 +49,35 @@ diamonds <- diamonds %>% rename(
 ```{r}
 
 diamonds <- diamonds %>%
-  mutate(table_mm = table_pct * width_mm / 100)
+  mutate(table_mm = table * y / 100)
+
 
 # Overall table_mm arithmetic mean?
 
-
-
-
+diamonds %>%
+  summarise(
+    table_mean = mean(table_mm)
+  )
 
 
 # table_mm arithmetic mean within each clarity category
 
-
+diamonds %>%
+  group_by(clarity) %>%
+  summarise(mean_clarity = mean(table_mm))
 
 
 
 
 ```
 
-_Add your comment here_
+The relationship between clarity and average table length is that the lower the clarity score the bigger the diamond table length is on average. 
 
 ```{r}
 # calculate the arithmetic mean across all numeric variables
 
+diamonds %>%
+  
 
 
 
