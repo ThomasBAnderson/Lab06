@@ -1,6 +1,6 @@
 ---
 title: "Lab 06 - Functions and iterations"
-author: "INSERT NAME HERE"
+author: "Thomas Anderson"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -15,11 +15,11 @@ library(ggplot2)
 
 ```{r diamon_rename}
 diamonds <- diamonds %>% rename(
-    depth_pct = depth,
-    length_mm = x,
-    width_mm = y,
-    depth_mm = z,
-    table_pct = table
+    depth = depth_pct,
+    x = length_mm,
+    y = width_mm,
+    z = depth_mm,
+    table = table_pct
   )
 ```
 
